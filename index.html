@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#7dd3fc">
+    <title>Sapi Pilah Sampah - TK Muslimat NU Al Khairiyah Sigentong</title>
+    <link rel="icon" href="datasets/logo1.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Lilita+One&display=swap"
+        rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script>tailwind.config = { theme: { extend: { fontFamily: { game: ['Fredoka', 'system-ui', 'sans-serif'] } } } }</script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body class="font-game min-h-dvh flex flex-col select-none">
+
+    <!-- Latar: langit, matahari, awan, bukit, pohon & bunga -->
+    <div class="fixed inset-0 -z-10 overflow-hidden" aria-hidden="true" id="bg">
+        <div class="rainbow"></div>
+        <div class="sun"></div>
+        <div class="cloud" style="top:9%;--d:70s;--s:1"></div>
+        <div class="cloud" style="top:22%;--d:95s;--s:.7;animation-delay:-40s"></div>
+        <div class="cloud" style="top:5%;--d:120s;--s:1.3;animation-delay:-80s"></div>
+        <svg class="absolute bottom-0 w-full h-[34vh]" viewBox="0 0 1440 320" preserveAspectRatio="none">
+            <path fill="#a7e6a1" d="M0 120C200 40 420 30 640 100S1100 180 1440 60V320H0Z" />
+            <path fill="#7bd87a" d="M0 190C260 100 520 230 800 170S1260 110 1440 190V320H0Z" />
+            <path fill="#4fc15a" d="M0 260C300 200 600 300 940 250S1300 220 1440 270V320H0Z" />
+        </svg>
+        <img src="assets/img/deciduous-tree.svg" class="decor" style="left:2%;bottom:15%;width:clamp(50px,9vw,120px)"
+            alt="">
+        <img src="assets/img/deciduous-tree.svg" class="decor" style="right:3%;bottom:13%;width:clamp(60px,11vw,150px)"
+            alt="">
+    </div>
+
+    <!-- Header: 2 logo + nama sekolah -->
+    <header class="flex items-center justify-between gap-2 px-3 py-2 sm:px-6">
+        <img src="datasets/logo1.png" alt="Logo IGTKI" class="logo">
+        <div class="school">
+            <p class="text-[10px] sm:text-xs tracking-widest">TK MUSLIMAT NU</p>
+            <p class="text-base sm:text-2xl truncate">Al Khairiyah Sigentong</p>
+        </div>
+        <img src="datasets/logo2.png" alt="Logo Kabupaten Brebes" class="logo">
+    </header>
+
+    <main class="flex-1 flex flex-col relative">
+
+        <!-- BERANDA -->
+        <section id="home" class="screen relative flex flex-col items-center justify-center text-center gap-4 px-4">
+            <img src="assets/img/banana.svg" class="floater" style="left:4%;top:10%;--d:5s" alt="">
+            <img src="assets/img/cup-with-straw.svg" class="floater" style="right:5%;top:16%;--d:6s" alt="">
+            <img src="assets/img/fallen-leaf.svg" class="floater" style="left:8%;bottom:20%;--d:4.5s" alt="">
+            <img src="assets/img/canned-food.svg" class="floater" style="right:7%;bottom:24%;--d:5.5s" alt="">
+            <div class="pill home-stars" id="home-stars"></div>
+            <div class="flex items-end justify-center gap-3 sm:gap-8">
+                <div class="w-24 sm:w-44 float-slow" data-cow="o"></div>
+                <h1 class="title"><span style="--c:#ffd23f;--k:0">Sapi</span> <span style="--c:#6ee7a0;--k:1">Pilah</span><br><span style="--c:#7dd3fc;--k:2">Sampah</span></h1>
+                <div class="w-24 sm:w-44 float-slow" style="animation-delay:-1.3s" data-cow="a"></div>
+            </div>
+            <p class="tagline">Ayo bantu Si Sapi menjaga bumi tetap bersih!</p>
+            <button data-go="menu" class="btn3d btn-play"><img src="assets/img/play-button.svg" alt="">MAIN</button>
+            <div class="flex justify-center gap-4 sm:gap-8">
+                <button data-go="howto" class="round"><span><img src="assets/img/books.svg" alt=""></span>Cara Main</button>
+                <button data-go="scores" class="round"><span><img src="assets/img/trophy.svg" alt=""></span>Skor</button>
+                <button data-go="about" class="round"><span><img src="assets/img/woman-teacher.svg" alt=""></span>Pengembang</button>
+            </div>
+            <p class="credit">TK Muslimat NU Al Khairiyah Sigentong &middot; v2.0</p>
+        </section>
+
+        <!-- PILIH PERMAINAN -->
+        <section id="menu" class="screen hidden flex flex-col items-center text-center gap-4 px-4">
+            <div class="topbar"><button data-go="home" class="btn3d b-sky back"><img src="assets/img/left-arrow.svg" alt="">Kembali</button><h2 class="ribbon">Pilih Permainan</h2></div>
+            <div class="tabs">
+                <button class="tab on" data-tab="all">Semua</button>
+                <button class="tab" data-tab="g">Seru Bergerak</button>
+                <button class="tab" data-tab="k">Kuis Pintar</button>
+            </div>
+            <div id="menu-grid" class="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 w-full max-w-4xl"></div>
+        </section>
+
+        <!-- CARA MAIN -->
+        <section id="howto" class="screen hidden flex flex-col items-center gap-4 px-4">
+            <div class="topbar"><button data-go="home" class="btn3d b-sky back"><img src="assets/img/left-arrow.svg" alt="">Kembali</button><h2 class="ribbon">Cara Bermain</h2></div>
+            <div id="howto-list" class="grid sm:grid-cols-2 gap-3 w-full max-w-4xl"></div>
+        </section>
+
+        <!-- SKOR -->
+        <section id="scores" class="screen hidden flex flex-col items-center gap-4 px-4">
+            <div class="topbar"><button data-go="home" class="btn3d b-sky back"><img src="assets/img/left-arrow.svg" alt="">Kembali</button><h2 class="ribbon">Skor Terbaik</h2></div>
+            <div id="scores-list" class="grid gap-3 w-full max-w-xl"></div>
+            <button id="btn-reset" class="btn3d b-red reset"><img src="assets/img/counterclockwise-arrows-button.svg" alt="">Hapus Semua Skor</button>
+        </section>
+
+        <!-- TENTANG PENGEMBANG -->
+        <section id="about" class="screen hidden flex flex-col items-center gap-4 px-4">
+            <div class="topbar"><button data-go="home" class="btn3d b-sky back"><img src="assets/img/left-arrow.svg" alt="">Kembali</button><h2 class="ribbon">Tentang Pengembang</h2></div>
+            <div class="panel about">
+                <div class="flex justify-center gap-4"><img src="datasets/logo1.png" alt="Logo IGTKI" class="logo big"><img src="datasets/logo2.png" alt="Logo Kabupaten Brebes" class="logo big"></div>
+                <p class="small">Dikembangkan oleh</p>
+                <h3>Ana Susilo Aji, S.Pd.</h3>
+                <p class="school-name">TK Muslimat NU Al Khairiyah Sigentong</p>
+                <hr>
+                <p>Game <b>Sapi Pilah Sampah</b> dibuat untuk mengenalkan sampah <b>organik</b> dan <b>anorganik</b> kepada anak-anak dengan cara yang menyenangkan.</p>
+                <hr>
+                <p class="small">Gambar: Fluent Emoji (Microsoft, lisensi MIT)<br>Versi 2.0</p>
+            </div>
+        </section>
+
+        <!-- GAME: PILAH SAMPAH -->
+        <section id="sort" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="sort"></div>
+            <div
+                class="grid grid-cols-2 landscape:md:grid-cols-[1fr_1.1fr_1fr] gap-x-3 gap-y-2 flex-1 items-end content-end w-full max-w-5xl mx-auto px-3">
+                <div class="cow z-10" data-type="o" role="button" tabindex="0" aria-label="Sapi Organik">
+                    <div class="idle" data-cow="o"></div>
+                </div>
+                <div
+                    class="stage order-first col-span-2 landscape:md:order-none landscape:md:col-span-1 landscape:md:self-center relative z-20 flex flex-col items-center justify-center gap-2 py-2">
+                    <div id="drag" class="drag"></div>
+                    <p id="item-name" class="name"></p>
+                    <p class="tip">Seret sampah ke sapi yang tepat</p>
+                </div>
+                <div class="cow z-10" data-type="a" role="button" tabindex="0" aria-label="Sapi Anorganik">
+                    <div class="idle" data-cow="a"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAME KUIS: HITUNG, BEDA, LEBIH BANYAK -->
+        <section id="quiz" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="quiz"></div>
+            <div class="flex-1 flex flex-col gap-3 w-full max-w-3xl mx-auto px-3">
+                <div class="q panel">
+                    <div id="q-cow" class="w-14 sm:w-20 shrink-0"></div>
+                    <p id="q-text"></p>
+                </div>
+                <div id="field" class="field flex-1"></div>
+                <p id="q-tip" class="tip"></p>
+                <div id="opts"></div>
+            </div>
+        </section>
+
+        <!-- GAME: HUJAN SAMPAH -->
+        <section id="rain" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="rain"></div>
+            <div class="flex-1 flex flex-col w-full max-w-4xl mx-auto px-3 gap-2">
+                <div id="rain-target" class="q panel justify-center"></div>
+                <div id="rain-area" class="rain-area flex-1"></div>
+            </div>
+        </section>
+
+        <!-- GAME: TANGKAP SAMPAH -->
+        <section id="catch" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="catch"></div>
+            <div class="flex-1 flex flex-col w-full max-w-4xl mx-auto px-3 gap-2">
+                <div id="catch-target" class="q panel justify-center"></div>
+                <div id="catch-area" class="rain-area arc-area flex-1"><div id="catch-cow" class="arc-cow"></div></div>
+            </div>
+        </section>
+
+        <!-- GAME: SAPI BERLARI -->
+        <section id="run" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="run"></div>
+            <div class="flex-1 flex flex-col w-full max-w-4xl mx-auto px-3 gap-2">
+                <div id="run-target" class="q panel justify-center"></div>
+                <div id="run-area" class="rain-area arc-area road flex-1"><div id="run-cow" class="arc-cow"></div></div>
+            </div>
+        </section>
+
+        <!-- GAME: LEMPAR SAMPAH -->
+        <section id="throw" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="throw"></div>
+            <div class="flex-1 flex flex-col justify-between w-full max-w-4xl mx-auto px-3">
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="tcow" data-type="o"><div class="slide" data-cow="o"></div></div>
+                    <div class="tcow" data-type="a"><div class="slide s2" data-cow="a"></div></div>
+                </div>
+                <div class="stage relative z-20 flex flex-col items-center gap-2 py-2">
+                    <p class="tip">Jentikkan sampah ke atas, ke arah sapi yang tepat!</p>
+                    <div id="t-item" class="drag"></div>
+                    <p id="t-name" class="name"></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAME: TARIK GARIS -->
+        <section id="line" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="line"></div>
+            <div class="flex-1 flex flex-col w-full max-w-3xl mx-auto px-3 gap-2">
+                <p class="tip">Tarik garis dari sampah ke sapi yang tepat</p>
+                <div id="line-board" class="line-board flex-1">
+                    <svg id="line-svg"></svg>
+                    <div id="line-items" class="litems"></div>
+                    <div class="lcows">
+                        <div class="lcow" data-type="o"><div data-cow="o"></div></div>
+                        <div class="lcow" data-type="a"><div data-cow="a"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAME: SUSUN GAMBAR -->
+        <section id="puzzle" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="puzzle"></div>
+            <div class="flex-1 flex flex-col items-center gap-3 px-3">
+                <p class="tip">Seret kepingan untuk menukar, susun seperti contoh</p>
+                <div class="flex items-center gap-4">
+                    <div id="pz-ref" class="pz-ref"></div>
+                    <p id="pz-name" class="name"></p>
+                </div>
+                <div id="pz-grid" class="pz-grid"></div>
+            </div>
+        </section>
+
+        <!-- GAME: TULIS ANGKA -->
+        <section id="trace" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="trace"></div>
+            <div class="flex-1 flex flex-col items-center w-full max-w-xl mx-auto px-3 gap-2">
+                <div class="q panel"><p>Hitung sampahnya, lalu <u>tulis angkanya</u> !</p></div>
+                <div id="tr-items" class="seq"></div>
+                <div id="tr-box" class="tr-box"><canvas id="tr-guide"></canvas><canvas id="tr-draw"></canvas></div>
+                <div class="flex gap-3">
+                    <button id="tr-clear" class="btn3d b-orange px-6 py-2 text-xl">Hapus</button>
+                    <button id="tr-check" class="btn3d px-6 py-2 text-xl">Selesai</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- GAME: CARI PASANGAN -->
+        <section id="memory" class="screen hidden flex flex-col gap-2">
+            <div class="hud" data-hud="memory"></div>
+            <div class="flex-1 grid place-items-center px-3">
+                <div id="mem-grid" class="mem grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-4 w-full"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Intro game -->
+    <div id="intro" class="overlay hidden fixed inset-0 z-40 grid place-items-center bg-indigo-950/60 backdrop-blur-sm p-4">
+        <div class="result">
+            <span id="intro-icon" class="gicon intro-icon"></span>
+            <h2 id="intro-name"></h2>
+            <p id="intro-how"></p>
+            <div class="grid gap-3 mt-4">
+                <button data-go="start" class="btn3d btn-start py-3 text-3xl">MULAI!</button>
+                <button data-go="menu" class="btn3d b-sky py-2 text-lg">Kembali</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jeda -->
+    <div id="pause" class="overlay hidden fixed inset-0 z-40 grid place-items-center bg-indigo-950/60 backdrop-blur-sm p-4">
+        <div class="result">
+            <h2>Jeda</h2>
+            <p>Mau lanjut main?</p>
+            <div class="grid gap-3 mt-4">
+                <button data-go="resume" class="btn3d py-3 text-2xl">Lanjut</button>
+                <button data-go="again" class="btn3d b-orange py-3 text-xl">Ulangi</button>
+                <button data-go="menu" class="btn3d b-sky py-3 text-xl">Pilih Permainan</button>
+                <button data-go="home" class="btn3d b-red py-3 text-xl">Beranda</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hasil permainan -->
+    <div id="modal" class="overlay hidden fixed inset-0 z-40 grid place-items-center bg-indigo-950/60 backdrop-blur-sm p-4">
+        <div class="result">
+            <img src="assets/img/trophy.svg" alt="" class="w-24 mx-auto -mt-16 drop-shadow-lg">
+            <div id="m-stars" class="flex justify-center"></div>
+            <h2 id="m-title"></h2>
+            <p id="m-info"></p>
+            <div class="grid gap-3 mt-4">
+                <button data-go="again" class="btn3d py-3 text-2xl">Main Lagi</button>
+                <button data-go="menu" class="btn3d b-sky py-3 text-xl">Pilih Permainan</button>
+            </div>
+        </div>
+    </div>
+
+    <button id="btn-sound" class="pill sound" aria-label="Suara"></button>
+    <div id="toast" class="toast"></div>
+    <div id="fx" class="fixed inset-0 pointer-events-none z-50 overflow-hidden"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/audio.js"></script>
+    <script src="js/core.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/games.js"></script>
+    <script src="js/arcade.js"></script>
+    <script src="js/touch.js"></script>
+</body>
+
+</html>
